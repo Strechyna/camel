@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: camel-app-deployment
+  labels:
+    app: camel-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: camel-app
+  template:
+    metadata:
+      name: camel-app
+      labels:
+        app: camel-app
+    spec:
+      containers:
+        - name: camel-app
+          image: camel-app
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+      restartPolicy: Always
+      
